@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+export SVN_VERSION=1.14.2
+
+# Apple Silicon (ARM64/v8)
+docker run -d -p 80:80 -p 443:443 -v ~/Downloads/svnroot/:/home/svn --name svn-server olange/svn-server:$SVN_VERSION-armv8
+
+# Otherwise
+# docker run -d -p 80:80 -p 443:443 -v ~/Downloads/svnroot/:/home/svn --name svn-server olange/svn-server:$SVN_VERSION-amd64

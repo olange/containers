@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Latest commit hash
+export GIT_SHA=$(git rev-parse --short HEAD)
+export SVN_VERSION=1.14.2
+
+docker build --platform linux/arm/v8 -t olange/svn-server:$SVN_VERSION-armv8 --build-arg GIT_SHA --build-arg SVN_VERSION .
+docker build --platform linux/amd64 -t olange/svn-server:$SVN_VERSION-amd64 --build-arg GIT_SHA --build-arg SVN_VERSION .
