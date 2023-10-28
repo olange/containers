@@ -1,0 +1,108 @@
+{
+   "CapAdd" : null,
+   "CapDrop" : null,
+   "cmd" : "httpd-foreground",
+   "cpu_priority" : 0,
+   "enable_publish_all_ports" : false,
+   "enable_restart_policy" : true,
+   "enable_service_portal" : true,
+   "enabled" : true,
+   "env_variables" : [
+      {
+         "key" : "PATH",
+         "value" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      {
+         "key" : "SVN_ROOT_DIR",
+         "value" : "/home/svn"
+      },
+      {
+         "key" : "SVN_CONF_DIR",
+         "value" : "/etc/subversion"
+      },
+      {
+         "key" : "SVN_PASSWD_FILE",
+         "value" : "/etc/subversion/svn-auth-file.htpasswd"
+      },
+      {
+         "key" : "SVN_AUTHZ_FILE",
+         "value" : "/etc/subversion/svn-authz-file.conf"
+      },
+      {
+         "key" : "HTTPD_CONF_FILE",
+         "value" : "/etc/apache2/httpd.conf"
+      },
+      {
+         "key" : "HTTPD_CONF_DAV_SVN_FILE",
+         "value" : "/etc/apache2/conf.d/dav_svn.conf"
+      },
+      {
+         "key" : "HTTPD_LOGS_DIR",
+         "value" : "/var/log/apache2"
+      },
+      {
+         "key" : "HTTPD_PID_DIR",
+         "value" : "/run/apache2/"
+      },
+      {
+         "key" : "HOME",
+         "value" : "/home"
+      }
+   ],
+   "exporting" : false,
+   "id" : "75a9c2feae9a7aed594505ba9ba91858a977c1d57a0a0cf6ccc2056428e9fdd1",
+   "image" : "olange/svn-server:1.14.2-amd64",
+   "is_ddsm" : false,
+   "is_package" : false,
+   "links" : [],
+   "memory_limit" : 0,
+   "name" : "svn-server",
+   "network" : [
+      {
+         "driver" : "bridge",
+         "name" : "bridge"
+      }
+   ],
+   "network_mode" : "bridge",
+   "port_bindings" : [],
+   "privileged" : false,
+   "service_portals" : [
+      {
+         "port" : "80",
+         "protocol" : "http"
+      }
+   ],
+   "services" : [
+      {
+         "display_name" : "Docker svn-server 80",
+         "id" : "Docker-75a9c2feae9a7aed594505ba9ba91858a977c1d57a0a0cf6ccc2056428e9fdd1-80",
+         "proxy_target" : "http://172.17.0.2:80",
+         "service" : "Docker-75a9c2feae9a7aed594505ba9ba91858a977c1d57a0a0cf6ccc2056428e9fdd1-80",
+         "type" : "reverse_proxy"
+      }
+   ],
+   "shortcut" : {
+      "enable_shortcut" : false,
+      "enable_status_page" : false,
+      "enable_web_page" : false,
+      "web_page_url" : ""
+   },
+   "use_host_network" : false,
+   "volume_bindings" : [
+      {
+         "host_volume_file" : "/svnroot",
+         "mount_point" : "/home/svn",
+         "type" : "rw"
+      },
+      {
+         "host_volume_file" : "/svnroot/svn-auth-file.htpasswd",
+         "mount_point" : "/etc/subversion/svn-auth-file.htpasswd",
+         "type" : "ro"
+      },
+      {
+         "host_volume_file" : "/svnroot/svn-authz-file.conf",
+         "mount_point" : "/etc/subversion/svn-authz-file.conf",
+         "type" : "ro"
+      }
+   ]
+}
